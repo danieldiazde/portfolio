@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "writing": "Writing",
+    "resume": "CV",
+    "contact": "Contacto",
+    "menu": "Menú"
+  },
+  "common": {
+    "viewProjects": "Ver proyectos",
+    "downloadResume": "Descargar CV",
+    "readMore": "Leer más",
+    "backToProjects": "Volver a proyectos",
+    "comingSoon": "Próximamente",
+    "unavailable": "No disponible",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "liveDemo": "Demo"
+  },
+  "home": {
+    "headline": "Builder, estudiante de Ciencia de Datos y aspirante a ingeniero de IA.",
+    "subheadline": "Estudiante de Ciencia de Datos en Tecnológico de Monterrey construyendo sistemas de IA, herramientas para desarrolladores y software técnicamente ambicioso.",
+    "focusTitle": "Áreas de enfoque técnico",
+    "featuredTitle": "Proyectos",
+    "githubTitle": "Actividad en GitHub",
+    "experienceTitle": "Experiencia",
+    "writingTitle": "Writing",
+    "resumeTitle": "Enfoques de CV",
+    "contactTitle": "Abierto a prácticas, oportunidades de investigación y colaboraciones técnicas."
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Una selección de proyectos de IA/ML, software, datos y construcción técnica.",
+    "all": "Todos",
+    "ai-ml": "IA/ML",
+    "software": "Software",
+    "data": "Datos",
+    "research": "Investigación",
+    "hackathon": "Hackathon",
+    "robotics": "Robótica / Embebidos"
+  },
+  "status": {
+    "active": "Activo",
+    "completed": "Completado",
+    "private": "Privado",
+    "in-progress": "En progreso"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "description": "Educación, proyectos, hackathons, dirección de investigación y liderazgo."
+  },
+  "writing": {
+    "title": "Writing",
+    "description": "Uso este espacio para documentar lo que aprendo mientras construyo sistemas de IA, herramientas para desarrolladores y proyectos de software desde cero."
+  },
+  "resume": {
+    "title": "CV",
+    "description": "Dos versiones enfocadas del CV para oportunidades de IA/ML y software."
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "Abierto a prácticas, oportunidades de investigación y colaboraciones técnicas.",
+    "location": "Monterrey, México"
+  }
+}

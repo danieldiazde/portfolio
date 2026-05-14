@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "writing": "Writing",
+    "resume": "Resume",
+    "contact": "Contact",
+    "menu": "Menu"
+  },
+  "common": {
+    "viewProjects": "View Projects",
+    "downloadResume": "Download Resume",
+    "readMore": "Read more",
+    "backToProjects": "Back to projects",
+    "comingSoon": "Coming soon",
+    "unavailable": "Unavailable",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "liveDemo": "Live demo"
+  },
+  "home": {
+    "headline": "Builder, Data Science student, and aspiring AI engineer.",
+    "subheadline": "Data Science student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software.",
+    "focusTitle": "Technical focus areas",
+    "featuredTitle": "Projects",
+    "githubTitle": "GitHub contribution snapshot",
+    "experienceTitle": "Experience",
+    "writingTitle": "Writing",
+    "resumeTitle": "Resume focus areas",
+    "contactTitle": "Open to internships, research opportunities, and technical collaborations."
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A selective index of AI/ML, software, data, and builder projects.",
+    "all": "All",
+    "ai-ml": "AI/ML",
+    "software": "Software",
+    "data": "Data",
+    "research": "Research",
+    "hackathon": "Hackathon",
+    "robotics": "Robotics / Embedded"
+  },
+  "status": {
+    "active": "Active",
+    "completed": "Completed",
+    "private": "Private",
+    "in-progress": "In Progress"
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Education, project work, hackathons, research direction, and leadership."
+  },
+  "writing": {
+    "title": "Writing",
+    "description": "I use this space to document what I am learning while building AI systems, developer tools, and software projects from scratch."
+  },
+  "resume": {
+    "title": "Resume",
+    "description": "Two focused resume versions for AI/ML and software opportunities."
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Open to internships, research opportunities, and technical collaborations.",
+    "location": "Monterrey, México"
+  }
+}

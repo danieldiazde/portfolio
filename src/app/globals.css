@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rail-background: #faf9f5;
+  --background: 0 0% 100%;
+  --foreground: 229 55% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 229 55% 8%;
+  --primary: 176 40% 31%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 24% 94%;
+  --secondary-foreground: 229 45% 12%;
+  --muted: 42 24% 94%;
+  --muted-foreground: 220 11% 44%;
+  --accent: 176 32% 36%;
+  --accent-foreground: 0 0% 100%;
+  --border: 40 18% 86%;
+  --input: 40 18% 86%;
+  --ring: 176 40% 31%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: var(--rail-background);
+  color: hsl(var(--foreground));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.site-container {
+  width: min(100% - 2rem, 1120px);
+  margin-inline: auto;
+}
+
+.page-shell {
+  width: min(100%, 1360px);
+  min-height: 100vh;
+  margin-inline: auto;
+  background: var(--rail-background);
+  padding-bottom: 4rem;
+  box-shadow:
+    -18px 0 38px rgba(15, 23, 42, 0.055),
+    18px 0 38px rgba(15, 23, 42, 0.055);
+}
+
+.page-surface {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-bottom-right-radius: 1.4rem;
+  border-bottom-left-radius: 1.4rem;
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
+}
+
+.technical-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.028) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent 64%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.project-showcase-track {
+  transform: translateX(calc(var(--project-index) * -100%));
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 640px) {
+  .project-showcase-track {
+    transform: translateX(calc(var(--project-index) * (-50% - 0.625rem)));
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-showcase-track {
+    transform: translateX(
+      calc(var(--project-index) * (calc((100% - 3.75rem) / -3.5) - 1.25rem))
+    );
+  }
+}
