@@ -6,7 +6,7 @@ import { ResumeCTA } from "@/components/sections/resume-cta";
 import { WritingPreview } from "@/components/sections/writing-preview";
 import { createMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/config";
-import { site } from "@/data/site";
+import { site } from "@/content/site";
 
 export async function generateMetadata({
   params,
@@ -18,8 +18,7 @@ export async function generateMetadata({
     locale,
     path: `/${locale}`,
     title: site.title[locale],
-    description:
-      "Portfolio of Daniel Diaz de Leon Morales, a Data Science student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software projects.",
+    description: site.description,
   });
 }
 

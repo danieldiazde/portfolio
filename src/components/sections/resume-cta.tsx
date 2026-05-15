@@ -1,8 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { resumes } from "@/data/resumes";
-import { socials } from "@/data/socials";
+import { resumes } from "@/content/resumes";
+import { getVisibleSocials } from "@/content/socials";
+import type { Locale } from "@/i18n/config";
+import { pick } from "@/lib/content";
 import { Section } from "./section";
 
 const resumeVisuals = [
@@ -27,18 +29,16 @@ const resumeVisuals = [
 ];
 
 export async function ResumeCTA() {
+  const locale = (await getLocale()) as Locale;
   const t = await getTranslations();
-  const visibleSocials = socials.filter(
-    (social): social is typeof social & { href: string } =>
-      social.visible && Boolean(social.href),
-  );
+  const visibleSocials = getVisibleSocials();
 
   return (
     <Section id="resume" className="scroll-mt-20 bg-white pb-24 pt-14">
       <div className="site-container">
         <div className="flex items-baseline justify-between gap-4">
           <h2 className="text-3xl font-semibold tracking-tight text-slate-800 sm:text-4xl">
-            Resume
+            {t("resume.title")}
           </h2>
         </div>
 
@@ -58,55 +58,60 @@ export async function ResumeCTA() {
         </div>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {resumes.map((resume, index) => (
-            <article
-              key={resume.title}
-              className="group relative flex min-h-[21rem] flex-col overflow-hidden rounded-md bg-white/72 p-4 shadow-sm shadow-slate-950/[0.03] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/88 hover:shadow-xl hover:shadow-slate-950/[0.07]"
-            >
-              <span className="absolute inset-x-0 top-0 h-px bg-slate-400/70" />
-              <span className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" />
+          {resumes.map((resume, index) => {
+            const title = pick(resume.title, locale);
+            const description = pick(resume.description, locale);
 
-              <div className="flex flex-1 flex-col pt-2">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="max-w-[14rem] text-xl font-semibold tracking-tight text-slate-800 transition-colors group-hover:text-[#244f4a]">
-                    {resume.title}
-                  </h3>
-                  {resume.available ? (
-                    <Button
-                      asChild
-                      size="icon"
-                      aria-label={`Download ${resume.title}`}
-                    >
-                      <a href={resume.href} download>
-                        <Download className="h-4 w-4" />
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      size="icon"
-                      disabled
-                      aria-label={t("common.unavailable")}
-                    >
-                      <Download className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-                <p className="mt-4 text-sm leading-6 text-slate-600">
-                  {resume.description}
-                </p>
-              </div>
-
-              <div
-                className="-mx-4 -mb-4 mt-5 h-28 overflow-hidden rounded-b-md bg-slate-100 shadow-sm shadow-slate-950/[0.05] transition-transform duration-300 ease-out group-hover:scale-[1.01]"
-                style={{ background: resumeVisuals[index].background }}
+            return (
+              <article
+                key={resume.href}
+                className="group relative flex min-h-[21rem] flex-col overflow-hidden rounded-md bg-white/72 p-4 shadow-sm shadow-slate-950/[0.03] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/88 hover:shadow-xl hover:shadow-slate-950/[0.07]"
               >
+                <span className="absolute inset-x-0 top-0 h-px bg-slate-400/70" />
+                <span className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100" />
+
+                <div className="flex flex-1 flex-col pt-2">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="max-w-[14rem] text-xl font-semibold tracking-tight text-slate-800 transition-colors group-hover:text-[#244f4a]">
+                      {title}
+                    </h3>
+                    {resume.available ? (
+                      <Button
+                        asChild
+                        size="icon"
+                        aria-label={t("resume.downloadAria", { title })}
+                      >
+                        <a href={resume.href} download>
+                          <Download className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button
+                        size="icon"
+                        disabled
+                        aria-label={t("common.unavailable")}
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-600">
+                    {description}
+                  </p>
+                </div>
+
                 <div
-                  className="h-full w-full"
-                  style={{ background: resumeVisuals[index].overlay }}
-                />
-              </div>
-            </article>
-          ))}
+                  className="-mx-4 -mb-4 mt-5 h-28 overflow-hidden rounded-b-md bg-slate-100 shadow-sm shadow-slate-950/[0.05] transition-transform duration-300 ease-out group-hover:scale-[1.01]"
+                  style={{ background: resumeVisuals[index].background }}
+                >
+                  <div
+                    className="h-full w-full"
+                    style={{ background: resumeVisuals[index].overlay }}
+                  />
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </Section>

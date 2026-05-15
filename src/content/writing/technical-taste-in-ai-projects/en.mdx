@@ -1,0 +1,31 @@
+---
+title: Technical taste in AI projects
+summary: Working notes on choosing projects that build real engineering judgment instead of only producing demos.
+date: 2026-02-20
+status: draft
+tags: [ai, engineering, projects]
+---
+
+Most "AI projects" you can find online are demos. They demonstrate that a model exists and that the author can call its API. They do not demonstrate engineering taste.
+
+This is a working note on what I am trying to optimize for when I pick projects for myself.
+
+## What a demo proves
+
+A demo proves that a thing runs. It does not prove that:
+
+- The author understands when the thing fails.
+- The author thought about evaluation.
+- The author would catch a silent regression after a model upgrade.
+- The system is cheap enough to keep running.
+
+## What I want a project to prove
+
+When I look back at a project a year later, I want it to have left me with:
+
+- A clearer sense of where a class of system breaks.
+- An evaluation harness I can re-run.
+- A simpler mental model than I had before starting.
+- At least one decision I now disagree with — that is how I know I learned.
+
+Demos are fine. They just are not the point.

@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { site } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,11 +8,10 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "Daniel Diaz de Leon Morales | AI/ML Builder & Data Science Student",
+    default: site.title.en,
     template: "%s | Daniel Diaz de Leon Morales",
   },
-  description:
-    "Portfolio of Daniel Diaz de Leon Morales, a Data Science student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software projects.",
+  description: site.description,
 };
 
 export default function RootLayout({

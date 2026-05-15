@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
-import { getDisplayName } from "@/data/site";
+import { getDisplayName } from "@/content/site";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 

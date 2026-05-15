@@ -55,7 +55,9 @@ export async function getGitHubSnapshot(username: string) {
     return {
       total: Number(calendar.totalContributions ?? 0),
       days: calendar.weeks.flatMap(
-        (week: { contributionDays: { date: string; contributionCount: number }[] }) =>
+        (week: {
+          contributionDays: { date: string; contributionCount: number }[];
+        }) =>
           week.contributionDays.map((day) => ({
             date: day.date,
             count: day.contributionCount,

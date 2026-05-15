@@ -15,14 +15,17 @@
     "backToProjects": "Back to projects",
     "comingSoon": "Coming soon",
     "unavailable": "Unavailable",
+    "close": "Close",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Email",
     "liveDemo": "Live demo"
   },
   "home": {
-    "headline": "Builder, Data Science student, and aspiring AI engineer.",
-    "subheadline": "Data Science student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software.",
+    "heroGreeting": "Hi, I'm",
+    "heroDescription": "I'm a Data Science and Math student building AI systems, developer tools, and polished software products.",
+    "headline": "Builder, Data Science and Math student, and aspiring AI engineer.",
+    "subheadline": "Data Science and Math student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software.",
     "focusTitle": "Technical focus areas",
     "featuredTitle": "Projects",
     "githubTitle": "GitHub contribution snapshot",
@@ -40,7 +43,15 @@
     "data": "Data",
     "research": "Research",
     "hackathon": "Hackathon",
-    "robotics": "Robotics / Embedded"
+    "robotics": "Robotics / Embedded",
+    "ctaSite": "Site",
+    "ctaGithub": "GitHub",
+    "expandLabel": "Expand {title}",
+    "showPrevious": "Show previous project",
+    "showNext": "Show next project",
+    "techStack": "Tech stack",
+    "imagesComingSoon": "Project visuals coming soon",
+    "dialogLabel": "Project details: {title}"
   },
   "status": {
     "active": "Active",
@@ -54,11 +65,23 @@
   },
   "writing": {
     "title": "Writing",
-    "description": "I use this space to document what I am learning while building AI systems, developer tools, and software projects from scratch."
+    "backHome": "Back home",
+    "description": "I use this space to document what I am learning while building AI systems, developer tools, and software projects from scratch.",
+    "subtitle": "See what I am learning while building.",
+    "view": "View writing",
+    "showPrevious": "Show previous writing item",
+    "showNext": "Show next writing item",
+    "statusDraft": "Draft",
+    "statusPlanned": "Coming soon",
+    "statusPublished": "Published",
+    "readingTime": "{minutes} min read",
+    "empty": "No posts yet — check back soon.",
+    "draftBanner": "This post is a working draft."
   },
   "resume": {
     "title": "Resume",
-    "description": "Two focused resume versions for AI/ML and software opportunities."
+    "description": "Two focused resume versions for AI/ML and software opportunities.",
+    "downloadAria": "Download {title}"
   },
   "contact": {
     "title": "Contact",

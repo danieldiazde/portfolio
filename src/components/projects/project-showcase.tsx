@@ -2,61 +2,156 @@
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-import type { Project } from "@/data/projects";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
+import type { Project } from "@/content/projects";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
+import type { Locale } from "@/i18n/config";
+import { pick } from "@/lib/content";
+import { ProjectDrawer } from "./project-drawer";
+import { ProjectVisual } from "./project-visuals";
 
-function ShowcaseVisual({ project }: { project: Project }) {
-  const initials = project.title
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .slice(0, 2);
-
-  const variants: Record<string, string> = {
-    autograd: "from-slate-950 via-slate-900 to-[#244f4a]",
-    pipeline: "from-slate-950 via-[#244f4a] to-slate-900",
-    academic: "from-[#1f2937] via-slate-900 to-[#5e7f78]",
-    recruiting: "from-slate-950 via-[#2f6f68] to-slate-900",
-    pong: "from-zinc-950 via-slate-900 to-[#6f7f66]",
-    finance: "from-slate-950 via-[#365f59] to-slate-900",
-  };
-
+function CornerBracketsIcon({ className }: { className?: string }) {
   return (
-    <div
-      className={cn(
-        "relative aspect-[4/5] overflow-hidden rounded-md bg-gradient-to-br",
-        variants[project.image] ?? "from-slate-950 via-slate-900 to-[#244f4a]",
-      )}
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:32px_32px] opacity-60 transition-transform duration-700 ease-out group-hover:scale-105" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(94,127,120,0.34),transparent_34%),radial-gradient(circle_at_50%_95%,rgba(200,194,179,0.3),transparent_42%)]" />
-      <div className="absolute inset-x-8 top-1/2 flex -translate-y-1/2 items-center justify-center">
-        <div className="flex h-32 w-32 items-center justify-center rounded-[2rem] border border-white/20 bg-white/10 text-5xl font-semibold text-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-transform duration-500 ease-out group-hover:scale-105">
-          {initials}
-        </div>
-      </div>
-      <div className="absolute bottom-6 left-6 right-6">
-        <p className="text-2xl font-semibold tracking-tight text-white">
-          {project.title}
-        </p>
-      </div>
-    </div>
+      <path
+        d="M15 3h6v6"
+        className="translate-x-[-4px] translate-y-[4px] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+      />
+      <path
+        d="M9 21H3v-6"
+        className="translate-x-[4px] translate-y-[-4px] transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0"
+      />
+    </svg>
+  );
+}
+
+function ExpandButton({
+  ariaLabel,
+  onClick,
+}: {
+  ariaLabel: string;
+  onClick?: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick?.();
+      }}
+      className="absolute right-3 top-3 z-20 inline-flex h-10 w-10 origin-bottom-left items-center justify-center rounded-lg border border-white/60 bg-white/95 text-[#244f4a] shadow-lg shadow-slate-950/[0.18] backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-[1.08] group-hover:border-[#244f4a] group-hover:bg-[#244f4a] group-hover:text-white group-hover:shadow-xl group-hover:shadow-slate-950/[0.22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    >
+      <CornerBracketsIcon />
+    </button>
+  );
+}
+
+function CtaArrowIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path
+        d="M15 12H5"
+        pathLength={1}
+        strokeDasharray="1"
+        strokeDashoffset={1}
+        className="transition-[stroke-dashoffset] duration-300 ease-out group-hover:[stroke-dashoffset:0]"
+      />
+      <path d="m9 6 6 6-6 6" />
+    </svg>
+  );
+}
+
+function ProjectCtaLink({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-0.5 text-base font-semibold text-primary transition-colors duration-300 ease-out group-hover:text-[#1b3d39]"
+    >
+      {label}
+      <span className="inline-flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-out group-hover:translate-x-1">
+        <CtaArrowIcon />
+      </span>
+    </a>
   );
 }
 
 export function ProjectShowcase({ projects }: { projects: Project[] }) {
-  const t = useTranslations();
+  const locale = useLocale() as Locale;
+  const t = useTranslations("projects");
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [endOffset, setEndOffset] = useState(0);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
   const visibleCount = 3;
   const maxIndex = Math.max(projects.length - visibleCount, 0);
   const canScroll = projects.length > visibleCount;
+  const isAtEnd = canScroll && activeIndex >= maxIndex;
+
+  useEffect(() => {
+    const updateEndOffset = () => {
+      const viewport = viewportRef.current;
+      const track = trackRef.current;
+
+      if (!viewport || !track) {
+        return;
+      }
+
+      setEndOffset(Math.max(track.scrollWidth - viewport.clientWidth, 0));
+    };
+
+    updateEndOffset();
+
+    const resizeObserver = new ResizeObserver(updateEndOffset);
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+
+    if (viewport) {
+      resizeObserver.observe(viewport);
+    }
+
+    if (track) {
+      resizeObserver.observe(track);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [projects.length]);
 
   function showNextProject() {
-    setActiveIndex((index) => (index >= maxIndex ? 0 : index + 1));
+    setActiveIndex((index) => Math.min(index + 1, maxIndex));
   }
 
   function showPreviousProject() {
@@ -79,7 +174,7 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                 variant="ghost"
                 size="icon"
                 onClick={showPreviousProject}
-                aria-label="Show previous project"
+                aria-label={t("showPrevious")}
                 className="h-10 w-10 rounded-md bg-[#e8e5dc] text-primary hover:bg-[#d7d2c6] hover:text-[#244f4a]"
               >
                 <ArrowLeft className="h-5 w-5" />
@@ -92,37 +187,80 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
             variant="ghost"
             size="icon"
             onClick={showNextProject}
-            aria-label="Show next project"
+            disabled={isAtEnd}
+            aria-label={t("showNext")}
             className="h-10 w-10 rounded-md bg-[#e8e5dc] text-primary hover:bg-[#d7d2c6] hover:text-[#244f4a]"
           >
             <ArrowRight className="h-5 w-5" />
           </Button>
         ) : null}
       </div>
-      <div className="overflow-hidden">
+      <div ref={viewportRef} className="overflow-hidden">
         <div
+          ref={trackRef}
           className="project-showcase-track flex gap-5 transition-transform duration-700"
-          style={{ "--project-index": activeIndex } as React.CSSProperties}
+          data-align={isAtEnd ? "end" : "index"}
+          style={
+            {
+              "--project-end-offset": `${endOffset}px`,
+              "--project-index": activeIndex,
+            } as React.CSSProperties
+          }
         >
-          {projects.map((project) => (
-            <article
-              key={project.slug}
-              className="group min-w-[calc(100%-0rem)] sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc((100%-3.75rem)/3.5)]"
-            >
-              <Link href={`/projects/${project.slug}`} className="block">
-                <ShowcaseVisual project={project} />
-                <p className="mt-5 text-lg font-medium leading-7 text-slate-800">
-                  {project.shortDescription}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1 text-base font-semibold text-primary transition-colors group-hover:text-slate-800">
-                  {t("common.readMore")}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            </article>
-          ))}
+          {projects.map((project) => {
+            const title = pick(project.title, locale);
+            const previewDescription = pick(project.previewDescription, locale);
+
+            return (
+              <article
+                key={project.slug}
+                className="group relative min-w-[calc(100%-0rem)] sm:min-w-[calc(50%-0.625rem)] lg:min-w-[calc((100%-3.75rem)/3.5)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(project)}
+                  aria-label={t("expandLabel", { title })}
+                  className="block w-full rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  <ProjectVisual project={project} title={title} />
+                  <p className="mt-5 min-h-[84px] text-lg font-medium leading-7 text-slate-800">
+                    {previewDescription}
+                  </p>
+                </button>
+                <ExpandButton
+                  ariaLabel={t("expandLabel", { title })}
+                  onClick={() => setActiveProject(project)}
+                />
+                <div className="mt-5 flex items-center justify-between gap-4">
+                  {project.githubUrl ? (
+                    <ProjectCtaLink
+                      href={project.githubUrl}
+                      label={t("ctaGithub")}
+                    />
+                  ) : project.liveUrl ? (
+                    <ProjectCtaLink
+                      href={project.liveUrl}
+                      label={t("ctaSite")}
+                    />
+                  ) : (
+                    <span aria-hidden />
+                  )}
+                  {project.githubUrl && project.liveUrl ? (
+                    <ProjectCtaLink
+                      href={project.liveUrl}
+                      label={t("ctaSite")}
+                    />
+                  ) : null}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
+      <ProjectDrawer
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </div>
   );
 }

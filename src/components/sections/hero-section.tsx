@@ -2,20 +2,14 @@
 
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { getDisplayName, site } from "@/data/site";
-import { socials } from "@/data/socials";
+import { getSocial } from "@/content/socials";
 
 export function HeroSection() {
-  const locale = useLocale() as "en" | "es";
-  const displayName = getDisplayName(locale);
-  const github = socials.find(
-    (social) => social.label === "GitHub" && social.href,
-  );
-  const linkedIn = socials.find(
-    (social) => social.label === "LinkedIn" && social.href,
-  );
+  const t = useTranslations("home");
+  const github = getSocial("GitHub");
+  const linkedIn = getSocial("LinkedIn");
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -29,13 +23,14 @@ export function HeroSection() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative max-w-xl rounded-md bg-white/92 p-6 shadow-2xl shadow-slate-950/[0.08] ring-1 ring-[#e4e0d6]/90 backdrop-blur sm:p-8 lg:-mr-24">
+            <div className="relative z-0 max-w-xl p-6 sm:p-8">
+              <div className="absolute inset-0 -z-10 rounded-md bg-white/92 shadow-2xl shadow-slate-950/[0.08] ring-1 ring-[#e4e0d6]/90 backdrop-blur lg:-right-24" />
               <h1 className="text-balance text-5xl font-semibold tracking-tight text-slate-800 sm:text-6xl">
-                Hi, I&apos;m <span className="text-[#2f6f68]">Daniel</span>.
+                {t("heroGreeting")}{" "}
+                <span className="text-[#2f6f68]">Daniel</span>.
               </h1>
               <p className="mt-5 max-w-lg text-lg leading-8 text-slate-600">
-                I&apos;m a data science student building AI systems, developer
-                tools, and polished software products.
+                {t("heroDescription")}
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -72,18 +67,9 @@ export function HeroSection() {
                 <div className="absolute left-[18%] top-[18%] h-24 w-24 rounded-full bg-white/70" />
                 <div className="absolute bottom-[16%] right-[18%] h-20 w-20 rounded-full bg-[#6f7f66]/75" />
                 <div className="relative h-52 w-40 overflow-hidden rounded-md border border-white/75 bg-slate-100 shadow-2xl shadow-slate-950/[0.18] sm:h-64 sm:w-48">
-                  {site.profileImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={site.profileImage}
-                      alt={`Portrait of ${displayName}`}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-5xl font-semibold text-[#2f6f68]">
-                      DD
-                    </div>
-                  )}
+                  <div className="flex h-full w-full items-center justify-center text-5xl font-semibold text-[#2f6f68]">
+                    DD
+                  </div>
                 </div>
               </div>
             </div>

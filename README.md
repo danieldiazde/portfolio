@@ -1,6 +1,6 @@
 # Daniel Diaz de Leon Morales Portfolio
 
-Production-ready bilingual portfolio for Daniel Diaz de Leon Morales / Daniel Díaz de León Morales, a Data Science student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software.
+Production-ready bilingual portfolio for Daniel Diaz de Leon Morales / Daniel Díaz de León Morales, a Data Science and Math student at Tecnológico de Monterrey building AI systems, developer tools, and technically ambitious software.
 
 ## Tech Stack
 
@@ -10,7 +10,6 @@ Production-ready bilingual portfolio for Daniel Diaz de Leon Morales / Daniel D�
 - shadcn/ui-style components
 - Framer Motion
 - next-intl
-- MDX-ready writing structure
 - Vercel Analytics
 
 ## Getting Started
@@ -33,9 +32,29 @@ pnpm build
 - `pnpm build` creates a production build.
 - `pnpm format` checks formatting with Prettier.
 
+## Content Architecture
+
+Editable portfolio content lives in `src/content/`. Components should import
+from this folder instead of hardcoding portfolio data.
+
+- `src/content/site.ts` controls names, SEO title copy, and the GitHub username.
+- `src/content/socials.ts` controls GitHub, LinkedIn, email, and social helpers.
+- `src/content/projects.ts` controls homepage project cards and project links.
+- `src/content/experience.ts` controls the experience timeline.
+- `src/content/writing.ts` controls writing cards.
+- `src/content/resumes.ts` controls resume cards and PDF availability.
+
+Shared navigation lives in `src/config/navigation.ts`. Add or remove homepage
+sections there so the navbar, mobile nav, and footer stay aligned.
+
 ## Editing Projects
 
-Edit `src/data/projects.ts`. Project pages, featured project cards, filters, and detail routes are generated from that file.
+Edit `src/content/projects.ts`. Featured project cards are generated from that
+file and link to `liveUrl` when present, otherwise `githubUrl`.
+
+To add a project, add one object to `projects`. Set `featured: true` if it
+should appear before non-featured work. Use `liveUrl` only when there is a
+public site; use `githubUrl` for the repository.
 
 ## Adding Resumes
 
@@ -46,14 +65,14 @@ Place PDFs in `public/resumes/`:
 
 The resume page handles missing PDFs gracefully during local development, but real PDFs should be added before deployment.
 
-## Adding Writing Posts
+## Editing Experience
 
-The writing structure is MDX-ready under:
+Edit `src/content/experience.ts`. The timeline renders the array in order.
 
-- `src/content/writing/en`
-- `src/content/writing/es`
+## Editing Writing
 
-Current writing cards are intentional coming-soon placeholders in `src/data/writing.ts`.
+Edit `src/content/writing.ts`. Current writing cards are intentional
+coming-soon placeholders and link to the writing index page.
 
 ## Environment Variables
 
@@ -65,11 +84,10 @@ NEXT_PUBLIC_VERCEL_ANALYTICS=true
 NEXT_PUBLIC_GITHUB_USERNAME=danieldiazde
 NEXT_PUBLIC_LINKEDIN_URL=
 NEXT_PUBLIC_EMAIL=
-NEXT_PUBLIC_PROFILE_IMAGE=
 GITHUB_TOKEN=
 ```
 
-Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`, and `NEXT_PUBLIC_EMAIL` to update public profile/contact links without changing component code. Set `NEXT_PUBLIC_PROFILE_IMAGE` to a local public path such as `/images/profile.jpg` after adding the file. `GITHUB_TOKEN` is optional. Without it, the GitHub section uses a polished static fallback.
+Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`, and `NEXT_PUBLIC_EMAIL` to update public profile/contact links without changing component code. `GITHUB_TOKEN` is optional. Without it, the GitHub section uses a polished static fallback.
 
 ## Deploying To Vercel
 
@@ -80,4 +98,3 @@ Import the GitHub repository into Vercel, keep the default Next.js settings, and
 - Replace placeholder resume PDFs.
 - Add a real Open Graph image at `public/images/og/default-og.png`.
 - Add exact email and LinkedIn links when ready.
-- Publish MDX writing posts.

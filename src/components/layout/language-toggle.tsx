@@ -15,8 +15,9 @@ export function LanguageToggle() {
       href={pathname}
       locale={target}
       className={cn(
-        "inline-flex translate-y-0 rounded-md border border-slate-200/80 bg-white/50 px-2.5 py-1.5 text-xs font-medium text-slate-500 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-white hover:text-slate-800",
+        "inline-flex min-w-14 translate-y-0 items-center justify-center rounded-md border border-slate-800/70 bg-slate-900/85 px-3 text-xs font-semibold text-slate-200 shadow-xl shadow-slate-950/15 ring-1 ring-white/10 backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-900/95 hover:text-white",
       )}
+      aria-label={`Switch language to ${target === "en" ? "English" : "Spanish"}`}
     >
       {target.toUpperCase()}
     </Link>

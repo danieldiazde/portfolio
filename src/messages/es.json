@@ -15,14 +15,17 @@
     "backToProjects": "Volver a proyectos",
     "comingSoon": "Próximamente",
     "unavailable": "No disponible",
+    "close": "Cerrar",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Email",
     "liveDemo": "Demo"
   },
   "home": {
-    "headline": "Builder, estudiante de Ciencia de Datos y aspirante a ingeniero de IA.",
-    "subheadline": "Estudiante de Ciencia de Datos en Tecnológico de Monterrey construyendo sistemas de IA, herramientas para desarrolladores y software técnicamente ambicioso.",
+    "heroGreeting": "Hi, soy",
+    "heroDescription": "Soy estudiante de Ciencia de Datos y Matemáticas construyendo sistemas de IA, herramientas y software.",
+    "headline": "Builder, estudiante de Ciencia de Datos y Matemáticas y aspirante a ingeniero de IA.",
+    "subheadline": "Estudiante de Ciencia de Datos y Matemáticas en Tecnológico de Monterrey construyendo sistemas de IA, herramientas para desarrolladores y software técnicamente ambicioso.",
     "focusTitle": "Áreas de enfoque técnico",
     "featuredTitle": "Proyectos",
     "githubTitle": "Actividad en GitHub",
@@ -40,7 +43,15 @@
     "data": "Datos",
     "research": "Investigación",
     "hackathon": "Hackathon",
-    "robotics": "Robótica / Embebidos"
+    "robotics": "Robótica / Embebidos",
+    "ctaSite": "Sitio",
+    "ctaGithub": "GitHub",
+    "expandLabel": "Expandir {title}",
+    "showPrevious": "Mostrar proyecto anterior",
+    "showNext": "Mostrar siguiente proyecto",
+    "techStack": "Stack técnico",
+    "imagesComingSoon": "Imágenes del proyecto próximamente",
+    "dialogLabel": "Detalles del proyecto: {title}"
   },
   "status": {
     "active": "Activo",
@@ -54,11 +65,23 @@
   },
   "writing": {
     "title": "Writing",
-    "description": "Uso este espacio para documentar lo que aprendo mientras construyo sistemas de IA, herramientas para desarrolladores y proyectos de software desde cero."
+    "backHome": "Volver al inicio",
+    "description": "Uso este espacio para documentar lo que aprendo mientras construyo sistemas de IA, herramientas para desarrolladores y proyectos de software desde cero.",
+    "subtitle": "Lo que aprendo mientras construyo.",
+    "view": "Ver writing",
+    "showPrevious": "Mostrar entrada anterior",
+    "showNext": "Mostrar siguiente entrada",
+    "statusDraft": "Borrador",
+    "statusPlanned": "Próximamente",
+    "statusPublished": "Publicado",
+    "readingTime": "{minutes} min de lectura",
+    "empty": "Aún no hay publicaciones — vuelve pronto.",
+    "draftBanner": "Esta entrada es un borrador en proceso."
   },
   "resume": {
     "title": "CV",
-    "description": "Dos versiones enfocadas del CV para oportunidades de IA/ML y software."
+    "description": "Dos versiones enfocadas del CV para oportunidades de IA/ML y software.",
+    "downloadAria": "Descargar {title}"
   },
   "contact": {
     "title": "Contacto",

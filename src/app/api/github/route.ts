@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { site } from "@/data/site";
+import { site } from "@/content/site";
 import { getGitHubSnapshot } from "@/lib/github";
 
 export async function GET() {
