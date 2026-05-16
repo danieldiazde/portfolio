@@ -66,9 +66,10 @@
   "writing": {
     "title": "Writing",
     "backHome": "Back home",
-    "description": "I use this space to document what I am learning while building AI systems, developer tools, and software projects from scratch.",
-    "subtitle": "See what I am learning while building.",
+    "description": "A record of what I’m learning as I build projects, study technical systems, and develop my engineering judgment.",
+    "subtitle": "Ideas, lessons, and opinions from my building journey.",
     "view": "View writing",
+    "viewAll": "View writings",
     "showPrevious": "Show previous writing item",
     "showNext": "Show next writing item",
     "statusDraft": "Draft",

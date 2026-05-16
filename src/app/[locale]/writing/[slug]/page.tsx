@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getTranslations } from "next-intl/server";
@@ -7,11 +6,9 @@ import rehypePrettyCode, {
   type Options as PrettyCodeOptions,
 } from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { WritingArticleLayout } from "@/components/writing/writing-article-layout";
 import { mdxComponents } from "@/components/writing/mdx-components";
 import type { Locale } from "@/i18n/config";
-import { Link } from "@/i18n/navigation";
 import { createMetadata } from "@/lib/seo";
 import { getPost, listAllPostParams } from "@/lib/mdx";
 
@@ -81,48 +78,24 @@ export default async function WritingDetailPage({
         : t("statusPublished");
 
   return (
-    <article className="site-container max-w-3xl py-12">
-      <Button asChild variant="outline" size="sm" className="mb-6">
-        <Link href="/writing">
-          <ArrowLeft className="h-4 w-4" />
-          {t("backHome")}
-        </Link>
-      </Button>
-
-      <header className="mb-10">
-        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500">
-          {formattedDate ? <time>{formattedDate}</time> : null}
-          {formattedDate ? <span aria-hidden>·</span> : null}
-          <span>
-            {t("readingTime", { minutes: post.meta.readingTimeMinutes })}
-          </span>
-          {post.meta.status !== "published" ? (
-            <Badge variant="secondary">{statusLabel}</Badge>
-          ) : null}
-        </div>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-          {post.meta.title}
-        </h1>
-        {post.meta.summary ? (
-          <p className="mt-4 text-lg leading-8 text-slate-600">
-            {post.meta.summary}
-          </p>
-        ) : null}
-      </header>
-
-      {post.meta.status === "draft" ? (
-        <div className="mb-8 rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          {t("draftBanner")}
-        </div>
-      ) : null}
-
-      <div className="text-slate-800">
-        <MDXRemote
-          source={post.content}
-          components={mdxComponents}
-          options={{ mdxOptions }}
-        />
-      </div>
-    </article>
+    <WritingArticleLayout
+      backLabel={t("backHome")}
+      draftBanner={t("draftBanner")}
+      formattedDate={formattedDate}
+      readingTime={t("readingTime", {
+        minutes: post.meta.readingTimeMinutes,
+      })}
+      slug={slug}
+      status={post.meta.status}
+      statusLabel={statusLabel}
+      summary={post.meta.summary}
+      title={post.meta.title}
+    >
+      <MDXRemote
+        source={post.content}
+        components={mdxComponents}
+        options={{ mdxOptions }}
+      />
+    </WritingArticleLayout>
   );
 }

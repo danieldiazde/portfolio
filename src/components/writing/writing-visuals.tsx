@@ -11,15 +11,11 @@ import type { PointerEvent } from "react";
 import { cn } from "@/lib/utils";
 
 const gradientBySlug: Record<string, string> = {
-  "building-a-tiny-autograd-engine-from-scratch":
-    "from-[#244f4a] via-[#2f6f68] to-[#8d8879]",
-  "gemini-powered-academic-coach": "from-[#1f2937] via-[#2f6f68] to-[#5e7f78]",
-  "becoming-an-ai-engineer": "from-slate-950 via-slate-800 to-[#365f59]",
-  "mlops-beyond-notebooks": "from-[#244f4a] via-[#5e7f78] to-[#c8c2b3]",
-  "autograd-performance-notes": "from-[#1f2937] via-[#2f6f68] to-[#6f7f66]",
-  "learning-reinforcement-learning":
-    "from-[#365f59] via-slate-800 to-slate-950",
-  "technical-taste-in-ai-projects": "from-slate-900 via-[#244f4a] to-[#5e7f78]",
+  "fake-it-until-you-make-it": "from-[#1f2937] via-[#2f6f68] to-[#8d8879]",
+  "lessons-from-building-a-complete-mlops-project":
+    "from-[#244f4a] via-[#5e7f78] to-[#c8c2b3]",
+  "what-reading-research-papers-is-teaching-me-about-engineering":
+    "from-slate-950 via-slate-800 to-[#365f59]",
 };
 
 const fallbackGradient = "from-slate-950 via-[#244f4a] to-[#5e7f78]";
@@ -112,12 +108,12 @@ export function WritingVisual({
       <motion.div
         className={cn(
           "absolute inset-[-20px] opacity-45 mix-blend-soft-light",
-          slug.includes("autograd") &&
-            "bg-[repeating-linear-gradient(112deg,transparent_0,transparent_11px,rgba(255,255,255,0.28)_12px,transparent_14px)]",
-          slug.includes("gemini") &&
-            "bg-[radial-gradient(circle_at_28%_38%,rgba(255,255,255,0.35)_0_2px,transparent_3px),radial-gradient(circle_at_60%_62%,rgba(255,255,255,0.24)_0_2px,transparent_3px)] bg-[size:72px_72px]",
-          slug.includes("reinforcement") &&
-            "bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:58px_58px]",
+          slug.includes("ai") &&
+            "bg-[radial-gradient(circle_at_26%_34%,rgba(255,255,255,0.35)_0_2px,transparent_3px),radial-gradient(circle_at_62%_58%,rgba(255,255,255,0.24)_0_2px,transparent_3px),linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px)] bg-[size:70px_70px,70px_70px,46px_46px]",
+          slug.includes("research") &&
+            "bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0_1px,transparent_1px_22px),repeating-linear-gradient(90deg,rgba(255,255,255,0.12)_0_1px,transparent_1px_34px)]",
+          slug.includes("mlops") &&
+            "bg-[linear-gradient(90deg,rgba(255,255,255,0.22)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.16)_1px,transparent_1px),repeating-linear-gradient(135deg,transparent_0_16px,rgba(255,255,255,0.2)_16px_18px)] bg-[size:56px_56px,56px_56px,42px_42px]",
         )}
         style={{ x: imageX, y: imageY }}
       />

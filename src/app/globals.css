@@ -69,6 +69,15 @@ body {
   border-bottom-left-radius: 1.4rem;
 }
 
+.article-content > p:first-of-type::first-letter {
+  float: left;
+  margin: 0.08em 0.14em -0.08em 0;
+  color: #244f4a;
+  font-size: 3.55rem;
+  font-weight: 650;
+  line-height: 0.72;
+}
+
 .technical-grid {
   background-image:
     linear-gradient(rgba(15, 23, 42, 0.028) 1px, transparent 1px),

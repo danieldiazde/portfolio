@@ -3,7 +3,7 @@
     "home": "Inicio",
     "experience": "Experiencia",
     "projects": "Proyectos",
-    "writing": "Writing",
+    "writing": "Escritos",
     "resume": "CV",
     "contact": "Contacto",
     "menu": "Menú"
@@ -30,7 +30,7 @@
     "featuredTitle": "Proyectos",
     "githubTitle": "Actividad en GitHub",
     "experienceTitle": "Experiencia",
-    "writingTitle": "Writing",
+    "writingTitle": "Escritos",
     "resumeTitle": "Enfoques de CV",
     "contactTitle": "Abierto a prácticas, oportunidades de investigación y colaboraciones técnicas."
   },
@@ -64,11 +64,12 @@
     "description": "Educación, proyectos, hackathons, dirección de investigación y liderazgo."
   },
   "writing": {
-    "title": "Writing",
+    "title": "Escritos",
     "backHome": "Volver al inicio",
-    "description": "Uso este espacio para documentar lo que aprendo mientras construyo sistemas de IA, herramientas para desarrolladores y proyectos de software desde cero.",
-    "subtitle": "Lo que aprendo mientras construyo.",
-    "view": "Ver writing",
+    "description": "Un registro de lo que aprendo mientras construyo proyectos, estudio sistemas técnicos y desarrollo mi criterio como ingeniero.",
+    "subtitle": "Ideas, lecciones y opiniones de mi camino construyendo.",
+    "view": "Ver escrito",
+    "viewAll": "Ver escritos",
     "showPrevious": "Mostrar entrada anterior",
     "showNext": "Mostrar siguiente entrada",
     "statusDraft": "Borrador",

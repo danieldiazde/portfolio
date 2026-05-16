@@ -108,8 +108,8 @@ export const projects: Project[] = [
       es: "Irongrad",
     },
     previewDescription: {
-      en: "A homemade autograd framework built from first principles.",
-      es: "Un framework casero de autograd construido desde primeros principios.",
+      en: "A homemade deeplearning framework built from first principles.",
+      es: "Un framework de deeplearning construido desde primeros principios.",
     },
     shortDescription: {
       en: "A homemade autograd and deep learning framework built to understand tensor operations, reverse-mode autodiff, and neural network internals.",
@@ -137,9 +137,9 @@ export const projects: Project[] = [
     featured: true,
     status: "in-progress",
     techStack: [
-      "Python",
-      "Machine Learning",
-      "MLOps",
+      "Scikit-Learn",
+      "Streamlit",
+      "SAP CF",
       "FastAPI",
       "Docker",
       "CI/CD",
@@ -178,7 +178,6 @@ export const projects: Project[] = [
     techStack: [
       "Next.js",
       "TypeScript",
-      "FastAPI",
       "Gemini API",
       "Google Calendar",
       "Tailwind CSS",
@@ -269,19 +268,19 @@ export const projects: Project[] = [
     category: "software",
     featured: false,
     status: "completed",
-    techStack: ["Swift", "SwiftUI", "SQLite", "Data Visualization"],
+    techStack: ["Swift", "SwiftUI", "SwiftData", "Mobile Development"],
     image: "finance",
     title: {
       en: "Fledge",
       es: "Fledge",
     },
     previewDescription: {
-      en: "A local finance dashboard for budgeting, tracking, and alerts.",
+      en: "A ",
       es: "Un dashboard local para presupuesto, seguimiento y alertas.",
     },
     githubUrl: "https://github.com/danieldiazde/fledge",
     shortDescription: {
-      en: "A local personal finance dashboard for budgeting, category tracking, and rule-based alerts.",
+      en: "A mood-adaptive iOS app that tailors daily missions and UI themes to the user's emotional state, helping newcomers acclimate to a specific city through gamified challenges.",
       es: "Un dashboard local de finanzas personales para presupuestos, seguimiento por categoría y alertas basadas en reglas.",
     },
     imageLayout: "two",

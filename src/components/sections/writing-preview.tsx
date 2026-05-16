@@ -6,6 +6,31 @@ import { Link } from "@/i18n/navigation";
 import { listPosts } from "@/lib/mdx";
 import { Section } from "./section";
 
+function CtaArrowIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path
+        d="M15 12H5"
+        pathLength={1}
+        strokeDasharray="1"
+        strokeDashoffset={1}
+        className="transition-[stroke-dashoffset] duration-300 ease-out group-hover:[stroke-dashoffset:0]"
+      />
+      <path d="m9 6 6 6-6 6" />
+    </svg>
+  );
+}
+
 export async function WritingPreview() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("writing");
@@ -30,8 +55,13 @@ export async function WritingPreview() {
               {t("subtitle")}
             </p>
           </div>
-          <Button asChild variant="outline">
-            <Link href="/writing">{t("view")}</Link>
+          <Button asChild className="group hover:translate-y-0">
+            <Link href="/writing">
+              {t("viewAll")}
+              <span className="inline-flex h-4 w-4 items-center justify-center transition-transform duration-300 ease-out group-hover:translate-x-1">
+                <CtaArrowIcon />
+              </span>
+            </Link>
           </Button>
         </div>
         <WritingShowcase items={posts} />
