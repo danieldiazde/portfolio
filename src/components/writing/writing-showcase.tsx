@@ -10,11 +10,7 @@ import { Link } from "@/i18n/navigation";
 import type { PostMeta } from "@/lib/mdx";
 import { cn } from "@/lib/utils";
 
-const previewWidths = [
-  "w-[14rem]",
-  "w-[10rem]",
-  "w-[7rem]",
-];
+const previewWidths = ["w-[14rem]", "w-[10rem]", "w-[7rem]"];
 
 const carouselTransition = {
   type: "spring",
@@ -156,7 +152,7 @@ export function WritingShowcase({ items }: { items: PostMeta[] }) {
             initial={{ opacity: 0, x: direction * 80 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: direction * -80 }}
-            transition={{ duration: 0.60, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between"
           >
             <div className="max-w-4xl text-xl leading-8">

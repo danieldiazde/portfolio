@@ -207,7 +207,9 @@ export function ProjectDrawer({
   const t = useTranslations("projects");
   const tCommon = useTranslations("common");
   const title = project ? pick(project.title, locale) : "";
-  const shortDescription = project ? pick(project.shortDescription, locale) : "";
+  const shortDescription = project
+    ? pick(project.shortDescription, locale)
+    : "";
 
   useEffect(() => {
     if (!project) {
@@ -304,16 +306,16 @@ export function ProjectDrawer({
                     {project.techStack
                       .slice(0, PROJECT_TECH_STACK_LIMIT)
                       .map((tech) => (
-                      <li
-                        key={tech}
-                        className="flex min-w-0 items-start gap-3 text-base font-medium leading-6 text-slate-600"
-                      >
-                        <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#244f4a]/10 text-[#244f4a]">
-                          <Check className="h-3.5 w-3.5" strokeWidth={2.8} />
-                        </span>
-                        <span className="break-words">{tech}</span>
-                      </li>
-                    ))}
+                        <li
+                          key={tech}
+                          className="flex min-w-0 items-start gap-3 text-base font-medium leading-6 text-slate-600"
+                        >
+                          <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#244f4a]/10 text-[#244f4a]">
+                            <Check className="h-3.5 w-3.5" strokeWidth={2.8} />
+                          </span>
+                          <span className="break-words">{tech}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
               </div>

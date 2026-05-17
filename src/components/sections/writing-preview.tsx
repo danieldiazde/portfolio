@@ -41,10 +41,7 @@ export async function WritingPreview() {
   }
 
   return (
-    <Section
-      id="writing"
-      className="scroll-mt-20 bg-white pb-16 pt-14"
-    >
+    <Section id="writing" className="scroll-mt-20 bg-white pb-16 pt-14">
       <div className="site-container">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>

@@ -41,7 +41,7 @@ from this folder instead of hardcoding portfolio data.
 - `src/content/socials.ts` controls GitHub, LinkedIn, email, and social helpers.
 - `src/content/projects.ts` controls homepage project cards and project links.
 - `src/content/experience.ts` controls the experience timeline.
-- `src/content/writing.ts` controls writing cards.
+- `src/content/writing/` contains localized MDX articles for the writing pages.
 - `src/content/resumes.ts` controls resume cards and PDF availability.
 
 Shared navigation lives in `src/config/navigation.ts`. Add or remove homepage
@@ -67,7 +67,7 @@ Place project images in `public/images/projects/` and reference them without
 `public`, for example:
 
 ```ts
-src: "/images/projects/irongrad-demo.png"
+src: "/images/projects/irongrad-demo.png";
 ```
 
 Recommended source ratios for the current drawer layouts:
@@ -88,12 +88,8 @@ same image differently.
 
 ## Adding Resumes
 
-Place PDFs in `public/resumes/`:
-
-- `resume-ai-ml.pdf`
-- `resume-software.pdf`
-
-The resume page handles missing PDFs gracefully during local development, but real PDFs should be added before deployment.
+Set `NEXT_PUBLIC_RESUME_URL` to the public resume URL. If it is not set, resume
+download buttons are hidden and the resume section renders as unavailable.
 
 ## Editing Experience
 
@@ -101,8 +97,9 @@ Edit `src/content/experience.ts`. The timeline renders the array in order.
 
 ## Editing Writing
 
-Edit `src/content/writing.ts`. Current writing cards are intentional
-coming-soon placeholders and link to the writing index page.
+Add or update localized MDX files under `src/content/writing/<slug>/en.mdx` and
+`src/content/writing/<slug>/es.mdx`. The writing index and article pages are
+generated from those files.
 
 ## Environment Variables
 
@@ -117,14 +114,22 @@ NEXT_PUBLIC_EMAIL=
 NEXT_PUBLIC_RESUME_URL=
 ```
 
-Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_EMAIL`, and `NEXT_PUBLIC_RESUME_URL` to update public profile/contact links without changing component code.
+Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`,
+`NEXT_PUBLIC_EMAIL`, and `NEXT_PUBLIC_RESUME_URL` to update public
+profile/contact links without changing component code.
+
+`NEXT_PUBLIC_SITE_URL` should be the canonical deployed origin. On the first
+Vercel deploy, use the Vercel-generated production URL if you do not have a
+custom domain yet. If a custom domain is added later, update this value and
+redeploy so metadata, sitemap, and robots output use the final domain.
 
 ## Deploying To Vercel
 
-Import the GitHub repository into Vercel, keep the default Next.js settings, and add environment variables if needed. No database, custom domain, or server setup is required.
+Import the GitHub repository into Vercel, keep the default Next.js settings, and
+add environment variables if needed. No database, custom domain, or server setup
+is required.
 
 ## Future Improvements
 
-- Replace placeholder resume PDFs.
-- Add a real Open Graph image at `public/images/og/default-og.png`.
+- Add or link a final resume when ready.
 - Add exact email and LinkedIn links when ready.

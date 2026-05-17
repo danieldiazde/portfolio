@@ -84,13 +84,7 @@ function CtaArrowIcon() {
   );
 }
 
-function ProjectCtaLink({
-  href,
-  label,
-}: {
-  href: string;
-  label: string;
-}) {
+function ProjectCtaLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}

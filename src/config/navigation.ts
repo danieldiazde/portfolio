@@ -1,8 +1,4 @@
-export const homeSections = [
-  "experience",
-  "projects",
-  "writing",
-] as const;
+export const homeSections = ["experience", "projects", "writing"] as const;
 
 export type HomeSection = (typeof homeSections)[number];
 

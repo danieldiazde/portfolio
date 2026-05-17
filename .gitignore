@@ -3,6 +3,8 @@ node_modules
 .pnpm-store
 out
 dist
+.DS_Store
+**/.DS_Store
 .env
 .env.local
 .env.*.local
@@ -10,3 +12,4 @@ dist
 *.tsbuildinfo
 package-lock.json
 yarn.lock
+.vercel

@@ -120,7 +120,7 @@ export const projects: Project[] = [
       {
         id: "autograd-demo",
         label: { en: "Autograd demo", es: "Demo de autograd" },
-        src: "/images/projects/autograd-demo.png"
+        src: "/images/projects/autograd-demo.png",
       },
     ],
   }),
@@ -129,7 +129,14 @@ export const projects: Project[] = [
     category: "ai-ml",
     featured: true,
     status: "completed",
-    techStack: ["scikit-learn", "FastAPI", "SAP BTP", "SAP HANA Cloud", "Streamlit", "Claude API"],
+    techStack: [
+      "scikit-learn",
+      "FastAPI",
+      "SAP BTP",
+      "SAP HANA Cloud",
+      "Streamlit",
+      "Claude API",
+    ],
     image: "pipeline",
     githubUrl: "https://github.com/danieldiazde/sap-threat-detector",
     title: {
@@ -141,21 +148,21 @@ export const projects: Project[] = [
       es: "Un SOC en tiempo real para SAP con detección de anomalías.",
     },
     shortDescription: {
-  en: "A real-time SOC with a Streamlit dashboard that scores live SAP security logs via Isolation Forest and a Claude-powered triage agent. TEC × SAP Hackathon semifinalist.",
-  es: "Un SOC en tiempo real con dashboard en Streamlit que evalúa logs de SAP con Isolation Forest y un agente de Claude para triaje. Semifinalista, Hackathon TEC × SAP.",
-},
+      en: "A real-time SOC with a Streamlit dashboard that scores live SAP security logs via Isolation Forest and a Claude-powered triage agent. TEC × SAP Hackathon semifinalist.",
+      es: "Un SOC en tiempo real con dashboard en Streamlit que evalúa logs de SAP con Isolation Forest y un agente de Claude para triaje. Semifinalista, Hackathon TEC × SAP.",
+    },
     imageLayout: "two",
     images: [
       {
         id: "architecture",
         label: { en: "Architecture Diagram", es: "Diagrama de Arquitectura" },
-        src: "/images/projects/sap-architecture-diagram.png"
+        src: "/images/projects/sap-architecture-diagram.png",
       },
       {
         id: "dashboard",
         label: { en: "Claude SOC dashboard", es: "Dashboard SOC de Claude" },
-        src: "/images/projects/dashboard-sap-threat-detector.png"
-      }
+        src: "/images/projects/dashboard-sap-threat-detector.png",
+      },
     ],
   }),
   defineProject({
@@ -163,7 +170,14 @@ export const projects: Project[] = [
     category: "ai-ml",
     featured: true,
     status: "in-progress",
-    techStack: ["Next.js", "FastAPI", "PostgreSQL", "OpenAI", "SQLAlchemy", "TypeScript"],
+    techStack: [
+      "Next.js",
+      "FastAPI",
+      "PostgreSQL",
+      "OpenAI",
+      "SQLAlchemy",
+      "TypeScript",
+    ],
     image: "recruiting",
     title: {
       en: "Stelle",
@@ -194,7 +208,13 @@ export const projects: Project[] = [
     category: "hackathon",
     featured: false,
     status: "completed",
-    techStack: ["Next.js", "TypeScript", "Gemini API", "Google Calendar", "Tailwind CSS"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Gemini API",
+      "Google Calendar",
+      "Tailwind CSS",
+    ],
     liveUrl: "https://teccoach.vercel.app/dashboard?demo=1",
     githubUrl: "https://github.com/danieldiazde/gemini-hackdays",
     image: "academic",
@@ -215,11 +235,12 @@ export const projects: Project[] = [
       {
         id: "Hackathon",
         label: { en: "Engering", es: "Entrando" },
-        src: "/images/projects/teccoach-preview.png"
-      }, {
-        id:"Hackathon",
-        label: {en: "Preview", es: "Preview"},
-        src: "/images/projects/teccoach-entering.png"
+        src: "/images/projects/teccoach-preview.png",
+      },
+      {
+        id: "Hackathon",
+        label: { en: "Preview", es: "Preview" },
+        src: "/images/projects/teccoach-entering.png",
       },
     ],
   }),
@@ -248,12 +269,11 @@ export const projects: Project[] = [
       {
         id: "agent",
         label: { en: "RL gameplay loop", es: "Loop de juego RL" },
-        src: "/images/projects/pong-rl-agent.png"
+        src: "/images/projects/pong-rl-agent.png",
       },
     ],
   }),
 ];
-
 
 export function getShowcaseProjects() {
   return [
