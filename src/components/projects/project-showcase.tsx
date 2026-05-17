@@ -231,7 +231,7 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                   ariaLabel={t("expandLabel", { title })}
                   onClick={() => setActiveProject(project)}
                 />
-                <div className="mt-5 flex items-center justify-between gap-4">
+                <div className="mt-5 flex items-center justify-start gap-3">
                   {project.githubUrl ? (
                     <ProjectCtaLink
                       href={project.githubUrl}

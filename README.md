@@ -56,6 +56,36 @@ To add a project, add one object to `projects`. Set `featured: true` if it
 should appear before non-featured work. Use `liveUrl` only when there is a
 public site; use `githubUrl` for the repository.
 
+### Project Image Ratios
+
+Project drawer images are rendered with `object-cover`, so images fill their
+panel and crop when their aspect ratio does not match the panel. Export images
+with padding around the important content so small crops hit the background,
+not the UI, code, or text.
+
+Place project images in `public/images/projects/` and reference them without
+`public`, for example:
+
+```ts
+src: "/images/projects/irongrad-demo.png"
+```
+
+Recommended source ratios for the current drawer layouts:
+
+- `imageLayout: "one"`: use a wide image around `2.8:1`.
+  Good export sizes: `1800x640`, `1600x570`, or `1400x500`.
+- `imageLayout: "two"`: first image around `1.6:1`, second image around `1.2:1`.
+  Good export sizes: `1600x1000` for the first and `1200x1000` for the second.
+- `imageLayout: "three"`: first image around `1.6:1`; second and third images
+  around `2.4:1` to `2.6:1`.
+  Good export sizes: `1600x1000` for the first and `1400x560` for the stacked
+  images.
+
+For screenshots, the safest workflow is to place the raw screenshot inside a
+larger designed canvas with a neutral background and margin. Keep the main
+subject centered; the drawer is responsive, so mobile and desktop can crop the
+same image differently.
+
 ## Adding Resumes
 
 Place PDFs in `public/resumes/`:
@@ -84,10 +114,10 @@ NEXT_PUBLIC_VERCEL_ANALYTICS=true
 NEXT_PUBLIC_GITHUB_USERNAME=danieldiazde
 NEXT_PUBLIC_LINKEDIN_URL=
 NEXT_PUBLIC_EMAIL=
-GITHUB_TOKEN=
+NEXT_PUBLIC_RESUME_URL=
 ```
 
-Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`, and `NEXT_PUBLIC_EMAIL` to update public profile/contact links without changing component code. `GITHUB_TOKEN` is optional. Without it, the GitHub section uses a polished static fallback.
+Use `NEXT_PUBLIC_GITHUB_USERNAME`, `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_EMAIL`, and `NEXT_PUBLIC_RESUME_URL` to update public profile/contact links without changing component code.
 
 ## Deploying To Vercel
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Github, X } from "lucide-react";
+import { ArrowRight, Check, Github, X } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect } from "react";
@@ -97,16 +97,18 @@ function ProjectImagePanel({
           ) : null}
         </>
       )}
-      <div className="absolute bottom-7 left-7 right-7">
-        <p className="max-w-md break-words text-2xl font-semibold tracking-tight text-white">
-          {featured ? title : label}
-        </p>
-        {featured ? (
-          <p className="mt-2 max-w-md break-words text-sm font-medium text-white/72">
-            {label}
+      {!image.src ? (
+        <div className="absolute bottom-7 left-7 right-7">
+          <p className="max-w-md break-words text-2xl font-semibold tracking-tight text-white">
+            {featured ? title : label}
           </p>
-        ) : null}
-      </div>
+          {featured ? (
+            <p className="mt-2 max-w-md break-words text-sm font-medium text-white/72">
+              {label}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
     </motion.div>
   );
 }
@@ -132,7 +134,7 @@ function ProjectImageLayout({
           locale={locale}
           delay={0.12}
           featured
-          className="min-h-[310px]"
+          className="min-h-[380px]"
         />
       </div>
     );
@@ -148,7 +150,7 @@ function ProjectImageLayout({
           locale={locale}
           delay={0.12}
           featured
-          className="min-h-[310px]"
+          className="min-h-[380px]"
         />
         <ProjectImagePanel
           image={secondImage}
@@ -156,7 +158,7 @@ function ProjectImageLayout({
           title={title}
           locale={locale}
           delay={0.18}
-          className="min-h-[310px]"
+          className="min-h-[380px]"
         />
       </div>
     );
@@ -171,7 +173,7 @@ function ProjectImageLayout({
         locale={locale}
         delay={0.12}
         featured
-        className="min-h-[310px]"
+        className="min-h-[380px]"
       />
       <div className="grid min-w-0 gap-5">
         <ProjectImagePanel
@@ -290,6 +292,7 @@ export function ProjectDrawer({
                           rel="noreferrer"
                         >
                           {t("ctaSite")}
+                          <ArrowRight className="h-4 w-4" />
                         </a>
                       </Button>
                     ) : null}

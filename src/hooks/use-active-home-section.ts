@@ -34,7 +34,7 @@ export function useActiveHomeSection() {
         document.documentElement.scrollHeight - 2;
 
       setActiveHash(
-        activeSection ? `#${activeSection}` : isAtBottom ? "#resume" : "",
+        activeSection ? `#${activeSection}` : isAtBottom ? "#writing" : "",
       );
     }
 

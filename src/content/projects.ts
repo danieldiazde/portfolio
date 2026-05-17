@@ -100,7 +100,7 @@ export const projects: Project[] = [
     category: "ai-ml",
     featured: true,
     status: "active",
-    techStack: ["Python", "C++20", "pybind11", "CMake", "uv", "pytest"],
+    techStack: ["Python", "C++17", "pybind11", "NumPy", "CMake", "pytest"],
     image: "autograd",
     githubUrl: "https://github.com/danieldiazde/irongrad",
     title: {
@@ -108,26 +108,19 @@ export const projects: Project[] = [
       es: "Irongrad",
     },
     previewDescription: {
-      en: "A homemade deeplearning framework built from first principles.",
-      es: "Un framework de deeplearning construido desde primeros principios.",
+      en: "A from-scratch deep learning framework with reverse-mode autograd.",
+      es: "Un framework de deep learning con autograd en modo reverso.",
     },
     shortDescription: {
-      en: "A homemade autograd and deep learning framework built to understand tensor operations, reverse-mode autodiff, and neural network internals.",
-      es: "Un framework casero de autograd y deep learning para entender tensores, autodiferenciación reversa e internals de redes neuronales.",
+      en: "A from-scratch deep learning framework in C++17 with reverse-mode autograd, NumPy broadcasting, and pybind11 bindings exposing Tensor, nn.Linear, MSE loss, and SGD.",
+      es: "Un framework de deep learning desde cero en C++17 con autograd reverso, broadcasting NumPy y bindings pybind11 que exponen Tensor, nn.Linear, MSE y SGD.",
     },
-    imageLayout: "three",
+    imageLayout: "one",
     images: [
       {
-        id: "engine",
-        label: { en: "Autograd engine", es: "Motor de autograd" },
-      },
-      {
-        id: "tensors",
-        label: { en: "Tensor operations", es: "Operaciones tensoriales" },
-      },
-      {
-        id: "training",
-        label: { en: "Training internals", es: "Internals de entrenamiento" },
+        id: "autograd-demo",
+        label: { en: "Autograd demo", es: "Demo de autograd" },
+        src: "/images/projects/autograd-demo.png"
       },
     ],
   }),
@@ -135,53 +128,74 @@ export const projects: Project[] = [
     slug: "sap-threat-detector",
     category: "ai-ml",
     featured: true,
-    status: "in-progress",
-    techStack: [
-      "Scikit-Learn",
-      "Streamlit",
-      "SAP CF",
-      "FastAPI",
-      "Docker",
-      "CI/CD",
-    ],
-    githubUrl: "https://github.com/danieldiazde/sap-threat-detector",
+    status: "completed",
+    techStack: ["scikit-learn", "FastAPI", "SAP BTP", "SAP HANA Cloud", "Streamlit", "Claude API"],
     image: "pipeline",
+    githubUrl: "https://github.com/danieldiazde/sap-threat-detector",
     title: {
       en: "SAP Threat Detector",
       es: "SAP Threat Detector",
     },
     previewDescription: {
-      en: "An MLOps threat detection project for security-style ML workflows.",
-      es: "Un proyecto MLOps de detección de amenazas para flujos de ML en seguridad.",
+      en: "A real-time SAP security operations center with anomaly detection.",
+      es: "Un SOC en tiempo real para SAP con detección de anomalías.",
     },
     shortDescription: {
-      en: "An MLOps-oriented threat detection project for building, evaluating, and operationalizing security-style machine learning workflows.",
-      es: "Un proyecto de detección con enfoque MLOps para construir, evaluar y operar flujos de machine learning en seguridad.",
+  en: "A real-time SOC with a Streamlit dashboard that scores live SAP security logs via Isolation Forest and a Claude-powered triage agent. TEC × SAP Hackathon semifinalist.",
+  es: "Un SOC en tiempo real con dashboard en Streamlit que evalúa logs de SAP con Isolation Forest y un agente de Claude para triaje. Semifinalista, Hackathon TEC × SAP.",
+},
+    imageLayout: "two",
+    images: [
+      {
+        id: "architecture",
+        label: { en: "Architecture Diagram", es: "Diagrama de Arquitectura" },
+        src: "/images/projects/sap-architecture-diagram.png"
+      },
+      {
+        id: "dashboard",
+        label: { en: "Claude SOC dashboard", es: "Dashboard SOC de Claude" },
+        src: "/images/projects/dashboard-sap-threat-detector.png"
+      }
+    ],
+  }),
+  defineProject({
+    slug: "stelle",
+    category: "ai-ml",
+    featured: true,
+    status: "in-progress",
+    techStack: ["Next.js", "FastAPI", "PostgreSQL", "OpenAI", "SQLAlchemy", "TypeScript"],
+    image: "recruiting",
+    title: {
+      en: "Stelle",
+      es: "Stelle",
+    },
+    previewDescription: {
+      en: "An AI job application tracker with LLM-powered fit analysis.",
+      es: "Un tracker de aplicaciones con análisis de fit potenciado por LLM.",
+    },
+    shortDescription: {
+      en: "A full-stack job application tracker with an OpenAI-powered fit analyzer, async ETL across 6 sources, and a kanban pipeline with auto-generated career tasks.",
+      es: "Un tracker full-stack de aplicaciones con analizador de fit con OpenAI, ETL asíncrono de 6 fuentes y un kanban con tareas auto-generadas.",
     },
     imageLayout: "two",
     images: [
       {
-        id: "pipeline",
-        label: { en: "Detection pipeline", es: "Pipeline de detección" },
+        id: "fit-analyzer",
+        label: { en: "Job fit analyzer", es: "Analizador de compatibilidad" },
       },
       {
-        id: "evaluation",
-        label: { en: "Model evaluation", es: "Evaluación del modelo" },
-      }
+        id: "kanban",
+        label: { en: "Application kanban", es: "Kanban de aplicaciones" },
+      },
     ],
   }),
   defineProject({
     slug: "teccoach",
     category: "hackathon",
-    featured: true,
+    featured: false,
     status: "completed",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Gemini API",
-      "Google Calendar",
-      "Tailwind CSS",
-    ],
+    techStack: ["Next.js", "TypeScript", "Gemini API", "Google Calendar", "Tailwind CSS"],
+    liveUrl: "https://teccoach.vercel.app/dashboard?demo=1",
     githubUrl: "https://github.com/danieldiazde/gemini-hackdays",
     image: "academic",
     title: {
@@ -189,109 +203,52 @@ export const projects: Project[] = [
       es: "TecCoach",
     },
     previewDescription: {
-      en: "A Gemini-powered academic coach for weekly study priorities.",
-      es: "Un coach académico con Gemini para prioridades semanales de estudio.",
+      en: "A Gemini-powered academic coach that suggests weekly study priorities.",
+      es: "Un coach académico con Gemini que sugiere prioridades semanales.",
     },
     shortDescription: {
-      en: "A Gemini-powered academic coach for Tec students that turns academic context into weekly study priorities and suggested calendar blocks.",
-      es: "Un coach académico para estudiantes del Tec que convierte contexto académico en prioridades semanales y bloques sugeridos de calendario.",
-    },
-    imageLayout: "one",
-    images: [
-      {
-        id: "priorities",
-        label: { en: "Study priorities", es: "Prioridades de estudio" },
-      }
-    ],
-  }),
-  defineProject({
-    slug: "stelle",
-    category: "software",
-    featured: false,
-    status: "private",
-    techStack: ["FastAPI", "PostgreSQL", "OAuth2", "Python", "TypeScript"],
-    image: "recruiting",
-    title: {
-      en: "Stelle",
-      es: "Stelle",
-    },
-    previewDescription: {
-      en: "A full-stack platform for recruiting prep and tech-stack learning.",
-      es: "Una plataforma full-stack para recruiting y aprendizaje técnico.",
-    },
-    shortDescription: {
-      en: "A full-stack platform helping students navigate recruiting, prepare for interviews, and learn relevant technology stacks.",
-      es: "Una plataforma full-stack que ayuda a estudiantes con recruiting, entrevistas y aprendizaje de stacks tecnológicos relevantes.",
+      en: "A Gemini-powered academic coach for Tec students that turns course context into weekly priorities and suggested Google Calendar study blocks.",
+      es: "Un coach académico con Gemini para estudiantes del Tec que convierte el contexto de cursos en prioridades semanales y bloques de estudio en Calendar.",
     },
     imageLayout: "two",
     images: [
       {
-        id: "recruiting",
-        label: { en: "Recruiting tracker", es: "Seguimiento de recruiting" },
-      },
-      {
-        id: "interviews",
-        label: { en: "Interview prep", es: "Preparación de entrevistas" },
+        id: "Hackathon",
+        label: { en: "Engering", es: "Entrando" },
+        src: "/images/projects/teccoach-preview.png"
+      }, {
+        id:"Hackathon",
+        label: {en: "Preview", es: "Preview"},
+        src: "/images/projects/teccoach-entering.png"
       },
     ],
   }),
   defineProject({
     slug: "pong-rl-agent",
     category: "ai-ml",
-    githubUrl : "https://github.com/danieldiazde/pong-ai",
     featured: false,
     status: "completed",
-    techStack: ["Python", "Pygame", "Reinforcement Learning", "Q-learning"],
+    techStack: ["Python", "Pygame", "NumPy"],
+    githubUrl: "https://github.com/danieldiazde/pong-ai",
     image: "pong",
     title: {
       en: "Pong RL Agent",
       es: "Agente RL de Pong",
     },
     previewDescription: {
-      en: "A Pong agent trained with a custom environment and Q-learning.",
-      es: "Un agente de Pong entrenado con un entorno propio y Q-learning.",
+      en: "A Pong agent trained from scratch with tabular Q-learning.",
+      es: "Un agente de Pong entrenado con Q-learning tabular desde cero.",
     },
     shortDescription: {
-      en: "A reinforcement learning Pong agent built with a custom Pygame environment and tabular Q-learning.",
-      es: "Un agente de reinforcement learning para Pong construido con un entorno propio en Pygame y Q-learning tabular.",
+      en: "A reinforcement learning Pong agent with a custom Gym-compatible Pygame environment (rigid-body physics) and a tabular Q-learning agent using epsilon-greedy exploration.",
+      es: "Un agente de RL para Pong con un entorno Pygame compatible con Gym (física de cuerpo rígido) y un agente Q-learning tabular con exploración epsilon-greedy.",
     },
     imageLayout: "one",
     images: [
       {
         id: "agent",
         label: { en: "RL gameplay loop", es: "Loop de juego RL" },
-      },
-    ],
-  }),
-  defineProject({
-    slug: "fledge",
-    category: "software",
-    featured: false,
-    status: "completed",
-    techStack: ["Swift", "SwiftUI", "SwiftData", "Mobile Development"],
-    image: "finance",
-    title: {
-      en: "Fledge",
-      es: "Fledge",
-    },
-    previewDescription: {
-      en: "A ",
-      es: "Un dashboard local para presupuesto, seguimiento y alertas.",
-    },
-    githubUrl: "https://github.com/danieldiazde/fledge",
-    shortDescription: {
-      en: "A mood-adaptive iOS app that tailors daily missions and UI themes to the user's emotional state, helping newcomers acclimate to a specific city through gamified challenges.",
-      es: "Un dashboard local de finanzas personales para presupuestos, seguimiento por categoría y alertas basadas en reglas.",
-    },
-    imageLayout: "two",
-    images: [
-      {
-        id: "budgeting",
-        label: { en: "Budget overview", es: "Vista de presupuesto" },
-      },
-      {
-        id: "alerts",
-        label: { en: "Rule-based alerts", es: "Alertas con reglas" },
+        src: "/images/projects/pong-rl-agent.png"
       },
     ],
   }),

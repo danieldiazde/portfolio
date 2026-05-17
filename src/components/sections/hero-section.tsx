@@ -1,15 +1,18 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { resumes } from "@/content/resumes";
 import { getSocial } from "@/content/socials";
 
 export function HeroSection() {
   const t = useTranslations("home");
   const github = getSocial("GitHub");
   const linkedIn = getSocial("LinkedIn");
+  const email = getSocial("Email");
+  const resume = resumes[0];
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -33,20 +36,45 @@ export function HeroSection() {
                 {t("heroDescription")}
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-2">
                 {linkedIn?.href ? (
-                  <Button asChild size="lg">
+                  <Button asChild size="sm">
                     <a href={linkedIn.href} target="_blank" rel="noreferrer">
                       <Linkedin className="h-4 w-4" />
                       LinkedIn
                     </a>
                   </Button>
                 ) : null}
+                {resume.available ? (
+                  <Button asChild variant="outline" size="sm">
+                    <a
+                      href={resume.href}
+                      target={resume.external ? "_blank" : undefined}
+                      rel={resume.external ? "noreferrer" : undefined}
+                    >
+                      <Download className="h-4 w-4" />
+                      Resume
+                    </a>
+                  </Button>
+                ) : (
+                  <Button variant="outline" size="sm" disabled>
+                    <Download className="h-4 w-4" />
+                    Resume
+                  </Button>
+                )}
                 {github?.href ? (
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="sm">
                     <a href={github.href} target="_blank" rel="noreferrer">
                       <Github className="h-4 w-4" />
                       GitHub
+                    </a>
+                  </Button>
+                ) : null}
+                {email?.href ? (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={email.href}>
+                      <Mail className="h-4 w-4" />
+                      Email
                     </a>
                   </Button>
                 ) : null}
